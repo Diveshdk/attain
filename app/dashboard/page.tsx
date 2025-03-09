@@ -28,13 +28,9 @@ export default function Dashboard() {
     setAssessmentTypes([...assessmentTypes, { name: '', weightage: 0 }]);
   };
 
-  const handleAssessmentChange = (index: number, field: keyof AssessmentType, value: string) => {
+  const handleAssessmentChange = (index: number, field: 'name' | 'weightage', value: string) => {
     const newTypes = [...assessmentTypes];
-    if (field === 'weightage') {
-      newTypes[index][field] = Number(value);
-    } else {
-      newTypes[index][field] = value;
-    }
+    newTypes[index][field] = field === 'weightage' ? Number(value) : value;
     setAssessmentTypes(newTypes);
   };
 
